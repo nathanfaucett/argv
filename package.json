@@ -1,0 +1,24 @@
+{
+  "name": "argv",
+  "version": "0.0.1",
+  "description": "argv parser for the browser and node.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathanfaucett/argv.git"
+  },
+  "main": "src/index.js",
+  "keywords": [
+    "argv",
+    "argv.js"
+  ],
+  "author": "Nathan Faucett",
+  "license": "BSD-2-Clause",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "",
+    "grunt-jsbeautifier": ""
+  },
+  "dependencies": {
+    "type": "nathanfaucett/type"
+  }
+}
