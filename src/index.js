@@ -53,9 +53,9 @@ function parseValue(key, value, typeStr, defaults) {
         if (type.isBoolean(value)) {
             return value;
         }
-        if (value === "true" || value == "1") {
+        if (value === "true" || value === "1" || value === 1) {
             return true;
-        } else if (value === "false" || value === "0") {
+        } else if (value === "false" || value === "0" || value === 0) {
             return false;
         }
 
