@@ -9,7 +9,7 @@ function argv(options) {
 
         parse: function(args) {
             var out = {},
-                parsedArgs, key, value, option;
+                parsedArgs, key, value, option, values;
 
             args = type.isArray(args) ? args : process.args.slice(2);
             parsedArgs = parseArgs(args);
@@ -21,13 +21,23 @@ function argv(options) {
                 out[option.name] = parseValue(key, value, option.type, option.defaults);
             }
 
+            values = options.values;
+
+            for (key in values) {
+                if (out[key] == null) {
+                    out[key] = values[key].defaults;
+                }
+            }
+
             return out;
         }
     };
 }
 
 function parseValue(key, value, typeStr, defaults) {
-    if (value === false) return false;
+    if (value === false) {
+        return false;
+    }
 
     if (value === undefined || value === null) {
         return defaults;
@@ -87,17 +97,17 @@ function createOption(key, options) {
         alias: type.isString(options[0]) ? options[0] : false,
         desc: type.isString(options[1]) ? options[1] : "",
         type: type.isString(options[2]) ? options[2].toLowerCase() : "",
-        defaults: type.isString(options[3]) ? options[3] : undefined
+        defaults: options[3] != null ? options[3] : undefined
     };
 }
 
 function parseArgs(args) {
     var out = {},
         i = -1,
-        length = args.length,
+        length = args.length - 1,
         arg;
 
-    while (++i < length) {
+    while (i++ < length) {
         arg = args[i];
 
         if (isNot(arg)) {
