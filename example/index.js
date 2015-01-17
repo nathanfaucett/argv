@@ -9,4 +9,4 @@ global.argvObj = argv({
 
 console.log(argvObj.parse(["--firstName", "Bob", "-ln", "Bill"]));
 console.log(argvObj.parse(["--lastName", "Bobby"]));
-console.log(argvObj.parse(["-a", "47"]));
+console.log(argvObj.parse(["-a=47"]));

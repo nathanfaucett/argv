@@ -1,4 +1,7 @@
-var type = require("type");
+var isArray = require("is_array"),
+    isNumber = require("is_number"),
+    isBoolean = require("is_boolean"),
+    isString = require("is_string");
 
 
 function argv(options) {
@@ -11,7 +14,7 @@ function argv(options) {
             var out = {},
                 parsedArgs, key, value, option, values;
 
-            args = type.isArray(args) ? args : process.args.slice(2);
+            args = isArray(args) ? args : process.args.slice(2);
             parsedArgs = parseArgs(args);
 
             for (key in parsedArgs) {
@@ -44,7 +47,7 @@ function parseValue(key, value, typeStr, defaults) {
     }
 
     if (typeStr === "string") {
-        if (type.isString(value)) {
+        if (isString(value)) {
             return value;
         } else {
             throw new Error("invalid type passed for " + key + ", wanted string");
@@ -52,7 +55,7 @@ function parseValue(key, value, typeStr, defaults) {
     } else if (typeStr === "number") {
         value = +value;
 
-        if (type.isNumber(value)) {
+        if (isNumber(value)) {
             return value;
         } else {
             throw new Error("invalid type passed for " + key + ", wanted number");
@@ -60,9 +63,10 @@ function parseValue(key, value, typeStr, defaults) {
     } else if (typeStr === "array") {
         return type.isArray(value) ? value : [value];
     } else if (typeStr === "bool" || typeStr === "boolean") {
-        if (type.isBoolean(value)) {
+        if (isBoolean(value)) {
             return value;
         }
+
         if (value === "true" || value === "1" || value === 1) {
             return true;
         } else if (value === "false" || value === "0" || value === 0) {
@@ -94,9 +98,9 @@ function createOptions(options) {
 function createOption(key, options) {
     return {
         name: key,
-        alias: type.isString(options[0]) ? options[0] : false,
-        desc: type.isString(options[1]) ? options[1] : "",
-        type: type.isString(options[2]) ? options[2].toLowerCase() : "",
+        alias: isString(options[0]) ? options[0] : false,
+        desc: isString(options[1]) ? options[1] : "",
+        type: isString(options[2]) ? options[2].toLowerCase() : "",
         defaults: options[3] != null ? options[3] : undefined
     };
 }
@@ -156,7 +160,7 @@ function pushArg(out, key, value, forceFlat) {
     }
 
     if (item) {
-        if (type.isArray(item)) {
+        if (isArray(item)) {
             item.push(value);
         } else {
             item = out[key] = [item];
