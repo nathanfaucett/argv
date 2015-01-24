@@ -14,7 +14,7 @@ function argv(options) {
             var out = {},
                 parsedArgs, key, value, option, values;
 
-            args = isArray(args) ? args : process.args.slice(2);
+            args = isArray(args) ? args : process.argv.slice(2);
             parsedArgs = parseArgs(args);
 
             for (key in parsedArgs) {
