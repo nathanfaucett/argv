@@ -4,9 +4,10 @@ global.argv = require("../src/index");
 global.argvObj = argv({
     firstName: ["fn", "pass your first name", "string", "Mary"],
     lastName: ["ln", "pass your last name", "string", "Sally"],
-    age: ["a", "pass your age", "number", 21]
+    age: ["a", "pass your age", "number", 21],
+    old: ["o", "pass if your old", "boolean"]
 });
 
 console.log(argvObj.parse(["--firstName", "Bob", "-ln", "Bill"]));
 console.log(argvObj.parse(["--lastName", "Bobby"]));
-console.log(argvObj.parse(["-a=47"]));
+console.log(argvObj.parse(["-a=47", "-o"]));

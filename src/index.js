@@ -43,7 +43,11 @@ function parseValue(key, value, typeStr, defaults) {
     }
 
     if (value === undefined || value === null) {
-        return defaults;
+        if (typeStr === "bool" || typeStr === "boolean") {
+            return true;
+        } else {
+            return defaults;
+        }
     }
 
     if (typeStr === "string") {
@@ -71,6 +75,8 @@ function parseValue(key, value, typeStr, defaults) {
             return true;
         } else if (value === "false" || value === "0" || value === 0) {
             return false;
+        } else {
+            return true;
         }
 
         throw new Error("invalid type passed for " + key + ", wanted boolean");
