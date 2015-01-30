@@ -65,7 +65,7 @@ function parseValue(key, value, typeStr, defaults) {
             throw new Error("invalid type passed for " + key + ", wanted number");
         }
     } else if (typeStr === "array") {
-        return type.isArray(value) ? value : [value];
+        return isArray(value) ? value : [value];
     } else if (typeStr === "bool" || typeStr === "boolean") {
         if (isBoolean(value)) {
             return value;
