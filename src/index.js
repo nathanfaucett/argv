@@ -4,6 +4,9 @@ var isArray = require("is_array"),
     isString = require("is_string");
 
 
+module.exports = argv;
+
+
 function argv(options) {
     options = createOptions(options);
 
@@ -92,7 +95,9 @@ function createOptions(options) {
 
     for (key in options) {
         option = values[key] = createOption(key, options[key]);
-        if (option.alias) aliases[option.alias] = option;
+        if (option.alias) {
+            aliases[option.alias] = option;
+        }
     }
 
     return {
@@ -145,7 +150,9 @@ function parseArg(out, arg, i, args) {
     while (++j < length) {
         next = args[j];
 
-        if (isArg(next)) break;
+        if (isArg(next)) {
+            break;
+        }
 
         i = j;
         pushArg(out, key, next);
@@ -170,7 +177,9 @@ function pushArg(out, key, value, forceFlat) {
             item.push(value);
         } else {
             item = out[key] = [item];
-            if (value) item.push(value);
+            if (value) {
+                item.push(value);
+            }
         }
     } else {
         out[key] = value;
@@ -178,17 +187,14 @@ function pushArg(out, key, value, forceFlat) {
 }
 
 function isArg(str) {
-
     return str && str[0] === "-";
 }
 
 function isNot(str) {
-
     return str && str.indexOf("--no-") === 0;
 }
 
 function capitalize(str) {
-
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
 
@@ -196,9 +202,9 @@ function camelcase(str) {
     var parts = (str || "").split("-"),
         i = parts.length;
 
-    while (i-- > 1) parts[i] = capitalize(parts[i]);
+    while (i-- > 1) {
+        parts[i] = capitalize(parts[i]);
+    }
+
     return parts.join("");
 }
-
-
-module.exports = argv;
