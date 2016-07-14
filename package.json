@@ -1,7 +1,7 @@
 {
-  "name": "argv",
+  "name": "@nathanfaucett/argv",
   "version": "0.0.1",
-  "description": "argv parser for the browser and node.js",
+  "description": "argv option parser",
   "repository": {
     "type": "git",
     "url": "https://github.com/nathanfaucett/argv.git"
@@ -15,14 +15,14 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.11.3",
-    "grunt-jsbeautifier": "^0.2.10"
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-jsbeautifier": "^0.2.13"
   },
   "dependencies": {
-    "is_array": "git://github.com/nathanfaucett/is_array.git",
-    "is_number": "git://github.com/nathanfaucett/is_number.git",
-    "is_boolean": "git://github.com/nathanfaucett/is_boolean.git",
-    "is_string": "git://github.com/nathanfaucett/is_string.git"
+    "@nathanfaucett/is_array": "^0.0.1",
+    "@nathanfaucett/is_number": "^0.0.1",
+    "@nathanfaucett/is_boolean": "^0.0.1",
+    "@nathanfaucett/is_string": "^0.0.1"
   }
 }

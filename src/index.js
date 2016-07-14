@@ -1,7 +1,7 @@
-var isArray = require("is_array"),
-    isNumber = require("is_number"),
-    isBoolean = require("is_boolean"),
-    isString = require("is_string");
+var isArray = require("@nathanfaucett/is_array"),
+    isNumber = require("@nathanfaucett/is_number"),
+    isBoolean = require("@nathanfaucett/is_boolean"),
+    isString = require("@nathanfaucett/is_string");
 
 
 module.exports = argv;
